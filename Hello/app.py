@@ -17,7 +17,7 @@ def dhoom(num):
 @app.route('/ran')
 def ranImg():
     v=request.args.get('url', default="https://spat-cloud.github.io/data/DORAEMON1.png",type=str)
-    return f"<img src=\"{v}\" alt=\"loading\">"
+    return get(url).content
 
 
 if __name__=="__main__":
