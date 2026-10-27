@@ -23,7 +23,7 @@ def ranImg():
 
 @app.route('/md5/<val:str>')
 def enc(val):
-    c=md5(val.encode('utf-8') if val!=None or val!='' else "0".encode('utf-8')) 
+    c=md5(val.encode('utf-8') if val!=None or val!=' ' else "0".encode('utf-8')) 
     return c.hexdigest()
 
 
