@@ -1,5 +1,7 @@
 from flask import Flask,render_template,request
 from requests import get
+from hashlib import md5
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -18,6 +20,12 @@ def dhoom(num):
 def ranImg():
     v=request.args.get('url', default="https://spat-cloud.github.io/data/DORAEMON1.png",type=str)
     return get(v).content
+
+@app.route('/md5/<val:str>')
+def enc(val):
+    c=md5(val.encode('utf-8') if val!=None or val!='' else "0".encode('utf-8')) 
+    return c.hexdigest()
+
 
 
 if __name__=="__main__":
