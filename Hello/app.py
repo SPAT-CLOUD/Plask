@@ -26,7 +26,11 @@ def enc(val):
     c=md5(val.encode('utf-8') if val!=None or val!=' ' else "0".encode('utf-8')) 
     return c.hexdigest()
 
-
+@app.route('/redir')
+def Easy():
+    Rurl=request.args.get("rurl", default="https://spat-cloud.github.io/default",type=str)
+    guys=f"<script>setTimeout(()=>window.location=\"{Rurl}"\,3000);</script>"
+    return guys
 
 if __name__=="__main__":
     app.run(debug=True)
