@@ -7,7 +7,7 @@ def Hello():
     return render_template("index.html")
 
 @app.route('/table/<int:num>')
-def dhoom(request,num):
+def dhoom(num):
     raq = request.args.get('limit',default=10,type=int)
     x=""
     for i in range(1,raq+1):
