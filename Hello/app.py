@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask,render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def Hello():
-    return 'Hello world, by Flask'
+    return render_template("index.html")
 
 @app.route('/page')
 def dhoom():
