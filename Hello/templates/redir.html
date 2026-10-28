@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redircting...</title>
+  </head>
+  <body>
+    
+    <center><img src="{{ img_src }}" alt="img"><br/><hr><br/>{{ msg_char }}</center>
+  </body>
+  <script>
+    function varm()
+    {
+      window.location = "{{ url_red }}";
+    }
+    setTimeout(varm,3500);
+  </script>
+</html>
