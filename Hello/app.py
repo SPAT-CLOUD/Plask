@@ -1,7 +1,6 @@
 from flask import Flask,render_template,request
 from requests import get
-
-#from hashlib import md5
+from hashlib import md5
 
 app = Flask(__name__)
 
@@ -22,8 +21,8 @@ def ranImg():
     v=request.args.get('url', default="https://spat-cloud.github.io/data/DORAEMON1.png",type=str)
     return get(v).content
 
-@app.route('/lh/<str:vp>')
-def LowHash():
+@app.route('/lh/<string:vp>')
+def LowHash(vp):
     dat=get(f"https://foxyware.pythonanywhere.com/lh?val={vp}")
     if dat.status_code==200:
         return dat.text
@@ -31,10 +30,10 @@ def LowHash():
         return f"<b>ERROR STATUS CODE {dat.status_code}</b>"
 
 
-# @app.route('/md5/<val:str>')
-# def enc(val):
-#     c=md5(val.encode('utf-8') if val!=None or val!=' ' else "0".encode('utf-8')) 
-#     return c.hexdigest()
+@app.route('/md5/<string:val>')
+def enc(val):
+    c=md5(val.encode('utf-8') if val!=None or val!=' ' else "0".encode('utf-8')) 
+    return c.hexdigest()
 
 # @app.route('/redir')
 # def Easy():
