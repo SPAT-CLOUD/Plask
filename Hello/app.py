@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request
 from requests import get
 from hashlib import md5
-
+from random import randint as rnum
 app = Flask(__name__)
 
 @app.route('/')
@@ -35,11 +35,21 @@ def enc(val):
     c=md5(val.encode('utf-8') if val!=None or val!=' ' else "0".encode('utf-8')) 
     return c.hexdigest()
 
-# @app.route('/redir')
-# def Easy():
-#     Rurl=request.args.get("rurl", default="https://spat-cloud.github.io/default",type=str)
-#     guys=f"<script>setTimeout(()=>window.location=\"{Rurl}"\,3000);</script>"
-#     return guys
+@app.route('/redir')
+def Easy():
+    imArr = [
+                "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExazZrM3FpZDllNmNudmsxbTJkY3ZjZG0xZTA4bXljdzY4eG9mMGIxciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EgzDbaFXWbNKIV1nRJ/giphy.gif",
+                "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWpmdDA0Ymk0Ym1paWs2Njhmc3pkbmZmeTRveHg4N2Z4NnozZTZxaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yw165bTss3jylzcY3G/giphy.gif",
+                "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGV0dGt0aHRlc2hpdG44ZHRobTdoam82bG9jN252a2R5bjJzbmNuNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Kpr1nwrQGNMw4cECXS/giphy.gif",
+                "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGlxbW5hM2tvZXIyNmdtczFoMDd2bXd2ODdmZjhiemViaHZpcjM0ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3p3Udf5339smpSqYav/giphy.gif"
+            ]
+    paka = imArr[rnum(0,len(imArr)-1)]
+    img_s = request.args.get('idx',default=paka)
+    Msg = request.args.get('umsg',default='Wait Load Loading...',type=str)
+    Rurl=request.args.get("rurl", default="https://spat-cloud.github.io/default",type=str)
+    # guys=f"<script>setTimeout(()=>window.location=\"{Rurl}"\,3000);</script>"
+    dads = render_template("redir.html",img_src=img_s,msg_char=Msg,url_red=Rurl)
+    return dads
 
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=5515,debug=True)
