@@ -10,11 +10,20 @@
         border: none;
         background-color: rgb(13, 13, 13);
     }
-
+  img#svd{
+    width:250px;
+    aspect-ratio:1/1;
+    border:1px solid #ddd;
+    border-radius:.3em;
+  }
+    h3{
+      color:#dcdcdc;
+      font-weight:790;
+    }
   </style>
   <body>
     
-    <center><img src="{{ img_src }}" alt="img"><br/><hr><br/><h3>{{ msg_char }}</h3></center>
+    <center><img src="{{ img_src }}" alt="img" id="svd"><br/><hr><br/><h3>{{ msg_char }}</h3></center>
     <!-- 
       ?idx=<URL:IMAGE>&
       umsg=<STRING:Message_display>&
