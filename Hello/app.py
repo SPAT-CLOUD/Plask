@@ -22,9 +22,9 @@ def ranImg():
     v=request.args.get('url', default="https://spat-cloud.github.io/data/DORAEMON1.png",type=str)
     return get(v).content
 
-@app.route('/lh/<str:value_param>')
+@app.route('/lh/<str:vp>')
 def LowHash():
-    dat=get(f"https://foxyware.pythonanywhere.com/lh?val={value_param}")
+    dat=get(f"https://foxyware.pythonanywhere.com/lh?val={vp}")
     if dat.status_code==200:
         return dat.text
     else:
