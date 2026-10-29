@@ -2,6 +2,8 @@ from flask import Flask,render_template,request
 from requests import get
 from hashlib import md5
 from random import randint as rnum
+import os
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -50,6 +52,17 @@ def Easy():
     # guys=f"<script>setTimeout(()=>window.location=\"{Rurl}"\,3000);</script>"
     dads = render_template("redir.html",img_src=img_s,msg_char=Msg,url_red=Rurl)
     return dads
+
+
+@app.route('/dummy')
+def checkDumi():
+    path_chk = os.path.exists(os.path.join('user_dump','dump.txt'))
+    if path_chk:
+        return True
+    else:
+        return False
+
+
 
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=5515,debug=True)
