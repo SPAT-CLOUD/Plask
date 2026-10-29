@@ -56,11 +56,13 @@ def Easy():
 
 @app.route('/dummy')
 def checkDumi():
-    path_chk = os.path.exists(os.path.join('user_dump','dump.txt'))
-    if path_chk:
-        return True
-    else:
-        return False
+    cpath = os.getcwd()
+    # path_chk = os.path.exists(os.path.join('user_dump','dump.txt'))
+    # if path_chk:
+    #     return True
+    # else:
+    #     return False
+    return f"CURRENT DIR = {cpath}"
 
 
 
