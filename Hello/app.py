@@ -71,7 +71,7 @@ def getWroted():
     spath =  os.path.join(cpath,'user_dump','dump.txt')
     if os.path.exists(spath):
         data_read = open(spath,'r')
-        data_in_file = data_read.text
+        data_in_file = data_read.read()
         data_read.close()
         return data_in_file
     else:
