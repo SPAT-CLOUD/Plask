@@ -65,6 +65,17 @@ def checkDumi():
     #     return False
     return f"CURRENT DIR = {cpath}<br>This path {spath} is {os.path.exists(spath)}"
 
+@app.route('/getconts')
+def getWroted():
+    cpath =  os.getcwd()
+    spath =  os.path.join(cpath,'user_dump','dump.txt')
+    if os.path.exists(spath):
+        data_read = open(spath,'r')
+        data_in_file = data_read.text
+        data_read.close()
+        return data_in_file
+    else:
+        return "Error opening file"
 
 
 if __name__=="__main__":
