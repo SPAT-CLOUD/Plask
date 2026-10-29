@@ -77,6 +77,20 @@ def getWroted():
     else:
         return "Error opening file"
 
+@app.route('/wrote')
+def Wrote_file():
+    cpath =  os.getcwd()
+    spath =  os.path.join(cpath,'user_dump','dump.txt')
+    Mdata = request.args.get('insert')
+    if os.path.exists(spath) and Mdata!='':
+        fbuf = open(spath,'a')
+        fbuf.write(Mdata)
+        fbuf.close()
+        return "INSERTED DATA SUCKSESS"
+    else:
+        return "ERROR FILE OR NO DATA INSERTION"
+
+
 
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=5515,debug=True)
