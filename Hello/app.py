@@ -81,8 +81,8 @@ def getWroted():
 def Wrote_file():
     cpath =  os.getcwd()
     spath =  os.path.join(cpath,'user_dump','dump.txt')
-    Mdata = request.args.get('insert')
-    if os.path.exists(spath) and Mdata!='':
+    Mdata = request.args.get('insert',default=' ')
+    if os.path.exists(spath) and Mdata!=' ':
         fbuf = open(spath,'a')
         fbuf.write(Mdata)
         fbuf.close()
