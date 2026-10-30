@@ -2,6 +2,7 @@ from flask import Flask,render_template,request
 from requests import get
 from hashlib import md5
 from random import randint as rnum
+import json
 import os
 
 app = Flask(__name__)
@@ -90,7 +91,15 @@ def Wrote_file():
     else:
         return "ERROR FILE OR NO DATA INSERTION"
 
-
+@app.route('/read_ip')
+def isp():
+    x="https://api.ipify.org/?format=json"
+    g = get(x)
+    if g.status_code==200:
+        Pars = json.loads(g.text)
+        return f"IP Public: {Pars.get('ip')}"
+    else:
+        return f"ERROR Cauting ip {g.status_code}"
 
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=5515,debug=True)
