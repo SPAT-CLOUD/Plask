@@ -91,6 +91,12 @@ def Wrote_file():
     else:
         return "ERROR FILE OR NO DATA INSERTION"
 
+
+
+@app.route('/api/love')
+def Love():
+    return "Double path /api/love bool sucksess<br/><video src=\"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlwMWV6dTN0djBzdzUxemlscmFsd28ydjdjc3A1Y25oazlzczU1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oVkTSEl6w9gWB7vhXz/giphy.gif\"  width=\"300\" style=\"aspect-ratio:16/9;\">"
+
 @app.route('/read_ip')
 def isp():
     x="https://api.ipify.org/"
