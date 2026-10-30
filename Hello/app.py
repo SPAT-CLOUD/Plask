@@ -93,11 +93,13 @@ def Wrote_file():
 
 @app.route('/read_ip')
 def isp():
-    x="https://api.ipify.org/?format=json"
-    g = get(x)
+    x="https://api.ipify.org/"
+    g = get(x,proxies={
+        'http':'http://0.0.0.0:5515'
+    })
     if g.status_code==200:
-        Pars = json.loads(g.text)
-        return f"IP Public: {Pars.get('ip')}"
+        Pars = g.text
+        return f"IP Public: {Pars}"
     else:
         return f"ERROR Cauting ip {g.status_code}"
 
