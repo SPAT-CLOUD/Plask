@@ -7,6 +7,10 @@ import os
 
 app = Flask(__name__)
 
+@app.errorhandle(404)
+def NotFound_404(e):
+    return render_template("404.html")
+
 @app.route('/')
 def Hello():
     return render_template("index.html")
