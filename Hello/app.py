@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 
-@app.errorhandle(404)
+@app.errorhandler(404)
 def NotFound_404(e):
     return render_template("404.html")
 
