@@ -107,7 +107,7 @@ def Love():
 def isp():
     Strm = req.args.get('iurl',default='https://spat-cloud.github.io/data/DORAEMON1.png')
     bcnv = BytesIO(get(Strm).content)
-    return send_file(bcnv,as_attachment=False,download_name='idono.bin')
+    return send_file(bcnv,mime_type='image/png',as_attachment=False,download_name='idono.bin')
 
     
 if __name__=="__main__":
