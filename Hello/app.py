@@ -2,6 +2,8 @@ from flask import Flask,render_template,request
 from requests import get
 from hashlib import md5
 from random import randint as rnum
+from flask import send_file
+from io import BytesIO
 import json
 import os
 
@@ -101,17 +103,12 @@ def Wrote_file():
 def Love():
     return "Double path /api/love bool sucksess<br/><img src=\"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlwMWV6dTN0djBzdzUxemlscmFsd28ydjdjc3A1Y25oazlzczU1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oVkTSEl6w9gWB7vhXz/giphy.gif\"  width=\"300\" style=\"aspect-ratio:1/1;\">"
 
-@app.route('/read_ip')
+@app.route('/photo')
 def isp():
-    x="https://api.ipify.org/"
-    g = get(x,proxies={
-        'http':'http://0.0.0.0:5515'
-    })
-    if g.status_code==200:
-        Pars = g.text
-        return f"IP Public: {Pars}"
-    else:
-        return f"ERROR Cauting ip {g.status_code}"
+    Strm = req.args.get('iurl',default='https://spat-cloud.github.io/data/DORAEMON1.png')
+    bcnv = BytesIO(get(Strm).content)
+    return send_file(bcnv,as_attachment=False,download_name='idono.bin')
 
+    
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=5515,debug=True)
