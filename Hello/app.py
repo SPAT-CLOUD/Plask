@@ -111,9 +111,11 @@ def isp():
     # Strm = req.args.get('iurl',default='https://spat-cloud.github.io/data/DORAEMON1.png')
     strm = open(os.path.join(curp,Ipath,stf),'rb')
     buffer =strm.read()
+    
     strm.close()
-    # bcnv = BytesIO(buffer)
-    return send_file(buffer,mime_type='image/png',as_attachment=False,download_name='idono.bin')
+    
+    bcnv = BytesIO(buffer)
+    return send_file(bcnv,mime_type='image/jpeg',as_attachment=False,download_name='hasirama.jpg')
 
     
 if __name__=="__main__":
