@@ -105,8 +105,14 @@ def Love():
 
 @app.route('/photo')
 def isp():
-    Strm = req.args.get('iurl',default='https://spat-cloud.github.io/data/DORAEMON1.png')
-    bcnv = BytesIO(get(Strm).content)
+    curp = os.getcwd()
+    Ipath = 'usr_img'
+    stf = 'hasirama.jpg'
+    # Strm = req.args.get('iurl',default='https://spat-cloud.github.io/data/DORAEMON1.png')
+    strm = open(os.path.join(curp,Ipath,stf),'rb')
+    buffer =strm.read()
+    strm.close()
+    bcnv = BytesIO(buffer)
     return send_file(bcnv,mime_type='image/png',as_attachment=False,download_name='idono.bin')
 
     
