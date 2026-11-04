@@ -112,8 +112,8 @@ def isp():
     strm = open(os.path.join(curp,Ipath,stf),'rb')
     buffer =strm.read()
     strm.close()
-    bcnv = BytesIO(buffer)
-    return send_file(bcnv,mime_type='image/png',as_attachment=False,download_name='idono.bin')
+    # bcnv = BytesIO(buffer)
+    return send_file(buffer,mime_type='image/png',as_attachment=False,download_name='idono.bin')
 
     
 if __name__=="__main__":
