@@ -20,7 +20,7 @@ app.secrect_key = md5(val.encode('utf-8')).hexdigest()
 # os.environ.get('FLASK_SECRECT_KEY','harsha_the_great_handsome_charming_good_looking_in_world')
 
 #TIME
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=300)
+# app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=300)
 
 
 @app.errorhandler(404)
