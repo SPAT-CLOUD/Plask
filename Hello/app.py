@@ -129,7 +129,7 @@ def Poster():
         session['user_ses'] = request.form.get('uname')
         return redirect('/GetUser')
         
-    return "405"
+    return redirect('/login')
 
 
 @app.route('/GetUser',methods=['GET','POST'])
