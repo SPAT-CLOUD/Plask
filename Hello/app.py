@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,session,redirect
 from requests import get
+from random import choices
 from hashlib import md5
 from random import randint as rnum
 # from flask import send_file
@@ -9,7 +10,14 @@ import json
 import os
 
 app = Flask(__name__)
-app.secrect_key = os.environ.get('FLASK_SECRECT_KEY','harsha_the_great_handsome_charming_good_looking_in_world')
+
+def Aamter():
+    cp = "".join(choices("0123456789abcdef",k=6))
+    return cp
+val = "harsha_is_handsome_"+Aamter
+
+app.secrect_key = md5(val.encode('utf-8')).hexdigest()
+# os.environ.get('FLASK_SECRECT_KEY','harsha_the_great_handsome_charming_good_looking_in_world')
 
 #TIME
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=300)
