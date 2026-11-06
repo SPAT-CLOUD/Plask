@@ -1,13 +1,19 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,session
 from requests import get
 from hashlib import md5
 from random import randint as rnum
-from flask import send_file
+# from flask import send_file
+from datetime import timedelta
 from io import BytesIO
 import json
 import os
 
 app = Flask(__name__)
+app.secrect_key = os.getenv('FLASK_SECRECT_KEY')
+
+#TIME
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=300)
+
 
 @app.errorhandler(404)
 def NotFound_404(e):
@@ -98,24 +104,45 @@ def Wrote_file():
         return "ERROR FILE OR NO DATA INSERTION"
 
 
-
 @app.route('/api/love')
 def Love():
     return "Double path /api/love bool sucksess<br/><img src=\"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlwMWV6dTN0djBzdzUxemlscmFsd28ydjdjc3A1Y25oazlzczU1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oVkTSEl6w9gWB7vhXz/giphy.gif\"  width=\"300\" style=\"aspect-ratio:1/1;\">"
 
-@app.route('/photo')
-def isp():
-    curp = os.getcwd()
-    Ipath = 'usr_img'
-    stf = 'hasirama.jpg'
-    # Strm = req.args.get('iurl',default='https://spat-cloud.github.io/data/DORAEMON1.png')
-    strm = open(os.path.join(curp,Ipath,stf),'rb')
-    buffer =strm.read()
+@app.route('/CreateUser',methods=['POST'])
+def Poster():
+    if request.method=='POST':
+        session.permanent = True
     
-    strm.close()
+        session['user_ses'] = request.form.get('uname')
+        return "SUCKESS SINGIN CHECK <a href='/GetUser'>Profile</a>"
+    return "405"
+
+
+@app.route('/GetUser',methods=['GET'])
+def Ses_chk():
+    # READ SES VAL uname
+    Val = session.get('user_ses',None)
+    if Val!=None and 'user_ses' in session:
+        return render_template('template.html',GIAN=Val)
+    return render_template('SINGIN.html')
+
+@app.route('/SingOut')
+def Sout():
+    session.pop('user_ses',None)
+    return "SINGED OUT SUCKSESS <a href='/CreateUser'>SINGIN</a>"
+# @app.route('/photo')
+# def isp():
+#     curp = os.getcwd()
+#     Ipath = 'usr_img'
+#     stf = 'hasirama.jpg'
+#     # Strm = req.args.get('iurl',default='https://spat-cloud.github.io/data/DORAEMON1.png')
+#     strm = open(os.path.join(curp,Ipath,stf),'rb')
+#     buffer =strm.read()
     
-    bcnv = BytesIO(buffer)
-    return send_file(bcnv,mime_type='image/jpeg',as_attachment=False,download_name='hasirama.jpg')
+#     strm.close()
+    
+#     bcnv = BytesIO(buffer)
+#     return send_file(bcnv,mime_type='image/jpeg',as_attachment=False,download_name='hasirama.jpg')
 
     
 if __name__=="__main__":
