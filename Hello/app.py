@@ -30,6 +30,11 @@ def NotFound_404(e):
 def Hello():
     return render_template("index.html")
 
+@app.route('/login')
+def log():
+    return render_template('SINGIN.html')
+
+
 @app.route('/table/<int:num>')
 def dhoom(num):
     raq = request.args.get('limit',default=10,type=int)
