@@ -10,13 +10,14 @@ import json
 import os
 
 app = Flask(__name__)
+# app.config['SECRET_KEY'] = os.getenv('FLASK_SECRECT_KEY')
+app.secret_key = os.environ.get('FLASK_SECRECT_KEY','harsha_the_great_handsome_charming_good_looking_in_world')
 
 def Aamter():
     cp = "".join(choices("0123456789abcdef",k=6))
     return cp
-val = "harsha_is_handsome_"+Aamter()
+# val = "harsha_is_handsome_"+Aamter()
 
-app.secrect_key = os.environ.get('FLASK_SECRECT_KEY','harsha_the_great_handsome_charming_good_looking_in_world')
 
 #TIME
 # app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=300)
