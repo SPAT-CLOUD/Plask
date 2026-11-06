@@ -131,7 +131,7 @@ def Poster():
     return "405"
 
 
-@app.route('/GetUser',methods=['GET'])
+@app.route('/GetUser',methods=['GET','POST'])
 def Ses_chk():
     # READ SES VAL uname
     Val = session.get('user_ses')
@@ -145,13 +145,13 @@ def Sout():
     return "SINGED OUT SUCKSESS <a href='/CreateUser'>SINGIN</a>"
 
 
-@app.route('/secrect/get')
-def rsec():
-    uch = os.getenv('FLASK_SECRECT_KEY')
-    if uch:
-        return f"SECRECT = {uch}"
-    else:
-        return "NOT THERE"
+# @app.route('/secrect/get')
+# def rsec():
+#     uch = os.getenv('FLASK_SECRECT_KEY')
+#     if uch:
+#         return f"SECRECT = {uch}"
+#     else:
+#         return "NOT THERE"
 
 # @app.route('/photo')
 # def isp():
