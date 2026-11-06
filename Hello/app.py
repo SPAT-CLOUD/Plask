@@ -108,7 +108,7 @@ def Wrote_file():
 def Love():
     return "Double path /api/love bool sucksess<br/><img src=\"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHlwMWV6dTN0djBzdzUxemlscmFsd28ydjdjc3A1Y25oazlzczU1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oVkTSEl6w9gWB7vhXz/giphy.gif\"  width=\"300\" style=\"aspect-ratio:1/1;\">"
 
-@app.route('/CreateUser',methods=['POST'])
+@app.route('/CreateUser',methods=['GET','POST'])
 def Poster():
     if request.method=='POST':
         session.permanent = True
@@ -121,8 +121,8 @@ def Poster():
 @app.route('/GetUser',methods=['GET'])
 def Ses_chk():
     # READ SES VAL uname
-    Val = session.get('user_ses',None)
-    if Val!=None and 'user_ses' in session:
+    Val = session.get('user_ses')
+    if 'user_ses' in session:
         return render_template('template.html',GIAN=Val)
     return render_template('SINGIN.html')
 
