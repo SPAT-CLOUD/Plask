@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,session
+from flask import Flask,render_template,request,session,redirect
 from requests import get
 from hashlib import md5
 from random import randint as rnum
@@ -114,7 +114,8 @@ def Poster():
         session.permanent = True
     
         session['user_ses'] = request.form.get('uname')
-        return "SUCKESS SINGIN CHECK <a href='/GetUser'>Profile</a>"
+        return redirect('/GetUser')
+        
     return "405"
 
 
