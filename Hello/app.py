@@ -14,7 +14,7 @@ app = Flask(__name__)
 def Aamter():
     cp = "".join(choices("0123456789abcdef",k=6))
     return cp
-val = "harsha_is_handsome_"+Aamter
+val = "harsha_is_handsome_"+Aamter()
 
 app.secrect_key = md5(val.encode('utf-8')).hexdigest()
 # os.environ.get('FLASK_SECRECT_KEY','harsha_the_great_handsome_charming_good_looking_in_world')
