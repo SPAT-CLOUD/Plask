@@ -111,7 +111,7 @@ def Love():
 @app.route('/CreateUser',methods=['GET','POST'])
 def Poster():
     if request.method=='POST':
-        session.permanent = True
+        # session.permanent = True
     
         session['user_ses'] = request.form.get('uname')
         return redirect('/GetUser')
