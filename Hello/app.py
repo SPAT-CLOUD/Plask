@@ -139,7 +139,16 @@ def Ses_chk():
 def Sout():
     session.pop('user_ses',None)
     return "SINGED OUT SUCKSESS <a href='/CreateUser'>SINGIN</a>"
-    
+
+
+@app.route('/secrect/get')
+def rsec():
+    uch = os.getenv('FLASK_SECRECT_KEY')
+    if uch:
+        return f"SECRECT = {uch}"
+    else:
+        return "NOT THERE"
+
 # @app.route('/photo')
 # def isp():
 #     curp = os.getcwd()
