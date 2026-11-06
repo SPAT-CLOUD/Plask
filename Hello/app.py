@@ -131,6 +131,7 @@ def Ses_chk():
 def Sout():
     session.pop('user_ses',None)
     return "SINGED OUT SUCKSESS <a href='/CreateUser'>SINGIN</a>"
+    
 # @app.route('/photo')
 # def isp():
 #     curp = os.getcwd()
