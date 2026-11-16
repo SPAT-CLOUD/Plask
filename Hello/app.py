@@ -151,7 +151,7 @@ def AppQR():
     return redirect('https://foxyware.pythonanywhere.com/isp')
 @app.route('/photo_scan')
 def Hass():
-    return redirect('https://foxyware.pythonanywhere.com/blob_img?code=20409a')
+    return redirect('https://foxyware.pythonanywhere.com/blob_img?code=366')
     
 # @app.route('/secrect/get')
 # def rsec():
