@@ -146,6 +146,10 @@ def Sout():
     return "SINGED OUT SUCKSESS <a href='/CreateUser'>SINGIN</a>"
 
 
+@app.route('/qr_test')
+def AppQR():
+    return redirect('https://foxyware.pythonanywhere.com/isp')
+
 # @app.route('/secrect/get')
 # def rsec():
 #     uch = os.getenv('FLASK_SECRECT_KEY')
